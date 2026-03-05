@@ -1,0 +1,18 @@
+class Solution {
+    public int climbStairs(int n) {
+        // Base cases for small n
+        if (n <= 3) return n;
+        
+        // Initializing the Fibonacci-like sequence values
+        int prev1 = 3; // ways(3)
+        int prev2 = 2; // ways(2)
+        int curr = 0;
+
+        for (int i = 4; i <= n; i++) {
+            curr = prev1 + prev2; // Relation: f(n) = f(n-1) + f(n-2)
+            prev2 = prev1;        // Move window forward
+            prev1 = curr;
+        }
+        return curr;
+    }
+}
